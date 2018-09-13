@@ -7,7 +7,7 @@
 
 if(isset($_POST['pseudo']) AND isset($_POST['message']) AND !empty($_POST['pseudo']) AND !empty($_POST['message']))
 {
-    $insertmsg = $bdd->exec("INSERT INTO muda(pseudo, message) VALUES($pseudo,$message)");
-    $insertmsg->execute(array($pseudo, $message));
+    $insert = $bdd->exec("INSERT INTO mini(pseudo, message) VALUES($pseudo,$message)");
+    $insert->execute(array($pseudo, $message));
 }
 ?>
