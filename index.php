@@ -15,6 +15,7 @@
         <input type="submit" name="submit" value="Envoyer">
     </form>
     <?php
+      // the connection of data base
     	$bdd = new PDO('mysql:host=localhost;dbname=mini_chat;charset=utf8', 'root', 'root');
 
 
@@ -26,14 +27,17 @@
 
       // var_dump($pseudo);
       //     var_dump($message);
+      
+      //the function which excute the date and time
 
-      $insert = $bdd->prepare("INSERT INTO mini(pseudo, message) VALUES(?,?)");
+      $insert = $bdd->prepare("INSERT INTO mini(pseudo, message, date_create) VALUES(?,?,NOW())");
       $insert->execute(array($pseudo, $message));
 
     }
     $allmessages = $bdd->query('SELECT * FROM mini');
     while ($messages = $allmessages->fetch())
     {
+      echo $messages['date_create'].'<br/>';
     	echo $messages['pseudo'].': ';
     	echo $messages['message'].'<br/>';
     }
